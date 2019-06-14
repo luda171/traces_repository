@@ -1,0 +1,35 @@
+---
+---
+[
+"traceName": "Plos",
+	     "uriPattern": "http://journals.plos.org/plosone/article?id=[10.1371/journal.pone.0167475]",
+	     "uriRegex": "http://journals.plos.org/plosone/article\\?id=(.*)?(&|$)",
+	     
+var tipuesearch_pages = [
+
+  {% for post in site.traces %}
+    {
+      "title"    : "{{ post.title | escape }}",
+      "category" : "{{ post.categories | join: ' ' }}",
+      "content"	  : "{{post.content | strip_html | strip_newlines | remove:  "	" | escape | remove: "\"}}",
+      "url"      : "{{ site.baseurl }}{{ post.url }}",
+      "date"     : "{{ post.date }}"
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+var tipuesearch = {
+    "pages": [
+        { 
+            "text": "http://journals.plos.org/plosone/article?id=[10.1371/journal.pone.0167475]",
+            "tags": "Example Category",
+            "url" : "http//oncrashreboot.com/plugin-example.html",
+            "title": "plos"
+        },
+        { 
+            "text": "Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.",
+            "tags": "Example Category",
+            "url" : "http://oncrashreboot.com/plugin-example-2.html",
+            "title": "Review of the book Lorem Ipsum"
+        }
+    ]
+}
